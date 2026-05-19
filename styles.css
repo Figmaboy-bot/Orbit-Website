@@ -799,7 +799,7 @@ nav {
 
 .cta-content {
   position: relative;
-  z-index: 2;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -859,6 +859,15 @@ nav {
 .cta-btn img {
   width: 20px;
   height: 20px;
+}
+
+.cta-footer-gradient {
+  height: 400px;
+  background: linear-gradient(to bottom, transparent 0%, rgb(255, 255, 255) 60%, rgb(255, 255, 255) 100%);
+  margin-top: -400px;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* ── FOOTER ── */
