@@ -284,7 +284,7 @@ nav {
 
 .how-it-works h2 {
   font-size: clamp(36px, 4vw, 56px);
-  font-weight: 800;
+  font-weight: 500;
   color: white;
   letter-spacing: -1.5px;
   margin-bottom: 64px;
@@ -442,13 +442,13 @@ nav {
   background: var(--dark);
   padding: 100px 48px 0;
   text-align: center;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
 }
 
 .send-money h2 {
   font-size: clamp(32px, 3.5vw, 52px);
-  font-weight: 800;
+  font-weight: 500;
   color: white;
   letter-spacing: -1.5px;
   margin-bottom: 60px;
@@ -470,24 +470,26 @@ nav {
 
 .flag-scatter {
   position: relative;
-  height: 160px;
+  height: 280px;
   margin-top: -20px;
   overflow: hidden;
 }
 
 .flag-circle {
   position: absolute;
-  width: 72px;
-  height: 72px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
-  border: 3px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 36px;
-  background: white;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
+}
+
+.flag-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ── SMARTER MONEY ── */
