@@ -22,9 +22,15 @@
   ];
   let recipIndex = 0, activeSymbol = '$', activeFeeRate = 0.01;
 
+  function formatAmount(num) {
+    const [int, dec] = num.toFixed(2).split('.');
+    return int.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '.' + dec;
+  }
+
   function updateFee() {
     const num = parseFloat(amountInput.value.replace(/[^\d.]/g, '')) || 0;
-    feeDisplay.textContent = `${activeSymbol} ${(num * activeFeeRate).toFixed(2)}`;
+    const fee = num * activeFeeRate;
+    feeDisplay.textContent = fee === 0 ? 'Free' : `${activeSymbol} ${formatAmount(fee)}`;
   }
 
   tabs.forEach(tab => {
@@ -47,8 +53,8 @@
   });
 
   amountInput.addEventListener('blur', () => {
-    const num = parseFloat(amountInput.value) || 0;
-    if (num > 0) amountInput.value = num.toFixed(2);
+    const num = parseFloat(amountInput.value.replace(/[^\d.]/g, '')) || 0;
+    if (num > 0) amountInput.value = formatAmount(num);
     updateFee();
   });
 
@@ -92,7 +98,7 @@
     updateFee();
     btn.textContent = 'Sending…'; btn.disabled = true;
     setTimeout(() => {
-      btn.textContent = `Sent ${activeSymbol}${amount.toFixed(2)} to ${r.name} ✓`;
+      btn.textContent = `Sent ${activeSymbol}${formatAmount(amount)} to ${r.name} ✓`;
       setTimeout(() => { btn.textContent = 'Send'; btn.disabled = false; }, 2000);
     }, 1000);
   });

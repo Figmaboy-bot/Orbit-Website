@@ -1321,7 +1321,7 @@ nav {
   padding: 12px 24px;
   border-radius: 100px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   text-decoration: none;
   transition: transform 0.2s;
 }
@@ -1409,7 +1409,7 @@ footer {
   padding: 10px 16px;
   border-radius: 100px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   text-decoration: none;
   transition: opacity 0.2s;
 }
@@ -1419,8 +1419,8 @@ footer {
 }
 
 .footer-app-btn svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 .footer-app-btn img {
