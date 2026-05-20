@@ -225,6 +225,41 @@ window.addEventListener('scroll', () => {
   }, { threshold: 0.2 }).observe(section);
 })();
 
+// Scroll-reveal: Add → Send → Convert
+// Scroll down  → item shows when its centre enters from below (crosses 88% mark)
+// Scroll up    → item hides when its centre exits from below (crosses 88% mark again)
+const actionItems = document.querySelectorAll('.action-item');
+let lastScrollY = window.scrollY;
+
+function updateActionItems() {
+  const vh = window.innerHeight;
+  const scrollY = window.scrollY;
+  const goingDown = scrollY > lastScrollY;
+  lastScrollY = scrollY;
+
+  actionItems.forEach(item => {
+    const { top, height } = item.getBoundingClientRect();
+    const centre = top + height / 2;
+
+    if (goingDown) {
+      if (centre > vh * 0.12 && centre < vh * 0.88) {
+        item.classList.add('visible');
+      } else if (centre < vh * 0.12) {
+        item.classList.remove('visible');
+      }
+    } else {
+      if (centre > vh * 0.12 && centre < vh * 0.88) {
+        item.classList.add('visible');
+      } else if (centre > vh * 0.88) {
+        item.classList.remove('visible');
+      }
+    }
+  });
+}
+
+window.addEventListener('scroll', updateActionItems, { passive: true });
+updateActionItems();
+
 // Animate steps in How it works
 const stepItems = document.querySelectorAll('.step-item');
 let current = 0;

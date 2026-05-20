@@ -207,7 +207,10 @@ nav {
 /* ── ADD / SEND / CONVERT ── */
 .actions-section {
   background: #fff;
-  padding: 200px 48px;
+  min-height: 120vh;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
 }
 
 .actions-inner {
@@ -223,6 +226,14 @@ nav {
   display: flex;
   align-items: center;
   gap: 32px;
+  opacity: 0;
+  transform: translateY(120px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.action-item.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .action-item:last-child {
@@ -230,9 +241,9 @@ nav {
 }
 
 .action-icon {
-  width: 160px;
-  height: 160px;
-  border-radius: 48px;
+  width: 140px;
+  height: 140px;
+  border-radius: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -240,8 +251,8 @@ nav {
 }
 
 .action-icon svg {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
 }
 
 .action-icon.add {
@@ -714,9 +725,6 @@ nav {
   transition: box-shadow 0.2s;
 }
 
-.faq-item:hover {
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-}
 
 .faq-question {
   width: 100%;
@@ -728,7 +736,7 @@ nav {
   gap: 20px;
   padding: 22px 24px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text);
   font-family: inherit;
   cursor: pointer;
