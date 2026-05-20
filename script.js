@@ -1,3 +1,103 @@
+// Phone UI interactivity
+(function () {
+  const tabs        = document.querySelectorAll('.ctab');
+  const currSymbol  = document.querySelector('.curr-symbol');
+  const amountInput = document.getElementById('amountInput');
+  const feeDisplay  = document.getElementById('feeDisplay');
+  const changeBtn   = document.getElementById('changeRecipientBtn');
+  const recipName   = document.querySelector('.recipient-name');
+  const recipHandle = document.querySelector('.recipient-handle');
+  const recipAvatar = document.querySelector('.recipient-avatar img');
+  const emojiBtn    = document.getElementById('emojiBtn');
+  const msgInput    = document.getElementById('messageInput');
+
+  if (!tabs.length) return;
+
+  const recipients = [
+    { name: 'Lina Johnson',  handle: '@lina.usd',  avatar: 'assets/Profile img/Lina Johnson.svg'  },
+    { name: 'Sophia Garcia', handle: '@sophia.usd', avatar: 'assets/Profile img/Sophia Garcia.svg' },
+    { name: 'Alex Kim',      handle: '@alex.usd',   avatar: 'assets/Profile img/Frame 316-1.svg'   },
+    { name: 'Marie Dubois',  handle: '@marie.usd',  avatar: 'assets/Profile img/Frame 316-2.svg'   },
+    { name: 'Carlos Mendez', handle: '@carlos.usd', avatar: 'assets/Profile img/Frame 316.svg'     },
+  ];
+  let recipIndex = 0, activeSymbol = '$', activeFeeRate = 0.01;
+
+  function updateFee() {
+    const num = parseFloat(amountInput.value.replace(/[^\d.]/g, '')) || 0;
+    feeDisplay.textContent = `${activeSymbol} ${(num * activeFeeRate).toFixed(2)}`;
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeSymbol = tab.dataset.symbol;
+      activeFeeRate = parseFloat(tab.dataset.feeRate);
+      currSymbol.textContent = activeSymbol;
+      updateFee();
+    });
+  });
+
+  amountInput.addEventListener('input', () => {
+    let val = amountInput.value.replace(/[^\d.]/g, '');
+    const parts = val.split('.');
+    if (parts.length > 2) val = parts[0] + '.' + parts.slice(1).join('');
+    amountInput.value = val;
+    updateFee();
+  });
+
+  amountInput.addEventListener('blur', () => {
+    const num = parseFloat(amountInput.value) || 0;
+    if (num > 0) amountInput.value = num.toFixed(2);
+    updateFee();
+  });
+
+  changeBtn.addEventListener('click', () => {
+    recipIndex = (recipIndex + 1) % recipients.length;
+    const r = recipients[recipIndex];
+    recipName.textContent = r.name;
+    recipHandle.textContent = r.handle;
+    if (recipAvatar) { recipAvatar.src = r.avatar; recipAvatar.alt = r.name; }
+  });
+
+  const emojis = ['😊','🙏','❤️','🎉','💸','🚀','✨','👍','😎','💯','🤝','🙌','😄','💪','🎁'];
+  let pickerEl = null;
+
+  emojiBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (pickerEl) { pickerEl.remove(); pickerEl = null; return; }
+    pickerEl = document.createElement('div');
+    pickerEl.className = 'emoji-picker';
+    emojis.forEach(em => {
+      const btn = document.createElement('button');
+      btn.textContent = em;
+      btn.addEventListener('click', () => {
+        msgInput.value += em;
+        msgInput.focus();
+        pickerEl.remove(); pickerEl = null;
+      });
+      pickerEl.appendChild(btn);
+    });
+    emojiBtn.appendChild(pickerEl);
+  });
+
+  document.addEventListener('click', () => { if (pickerEl) { pickerEl.remove(); pickerEl = null; } });
+
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    const amount = parseFloat(amountInput.value) || 0;
+    if (amount <= 0) { amountInput.focus(); return; }
+    const r = recipients[recipIndex];
+    const btn = document.getElementById('sendBtn');
+    amountInput.value = ''; msgInput.value = '';
+    updateFee();
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = `Sent ${activeSymbol}${amount.toFixed(2)} to ${r.name} ✓`;
+      setTimeout(() => { btn.textContent = 'Send'; btn.disabled = false; }, 2000);
+    }, 1000);
+  });
+})();
+
 // FAQ accordion
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -225,34 +325,28 @@ window.addEventListener('scroll', () => {
   }, { threshold: 0.2 }).observe(section);
 })();
 
-// Scroll-reveal: Add → Send → Convert
-// Scroll down  → item shows when its centre enters from below (crosses 88% mark)
-// Scroll up    → item hides when its centre exits from below (crosses 88% mark again)
+// Scroll-reveal: Add → Send → Convert, one at a time via scroll progress
 const actionItems = document.querySelectorAll('.action-item');
+const actionsSection = document.querySelector('.actions-section');
 let lastScrollY = window.scrollY;
 
+// Each item appears at these progress points (0–1 through the section)
+const thresholds = [0.05, 0.38, 0.71];
+
 function updateActionItems() {
-  const vh = window.innerHeight;
   const scrollY = window.scrollY;
   const goingDown = scrollY > lastScrollY;
   lastScrollY = scrollY;
 
-  actionItems.forEach(item => {
-    const { top, height } = item.getBoundingClientRect();
-    const centre = top + height / 2;
+  const scrolledPast = -actionsSection.getBoundingClientRect().top;
+  const range = actionsSection.offsetHeight - window.innerHeight;
+  const progress = Math.max(0, Math.min(1, scrolledPast / range));
 
-    if (goingDown) {
-      if (centre > vh * 0.12 && centre < vh * 0.88) {
-        item.classList.add('visible');
-      } else if (centre < vh * 0.12) {
-        item.classList.remove('visible');
-      }
-    } else {
-      if (centre > vh * 0.12 && centre < vh * 0.88) {
-        item.classList.add('visible');
-      } else if (centre > vh * 0.88) {
-        item.classList.remove('visible');
-      }
+  actionItems.forEach((item, i) => {
+    if (goingDown && progress >= thresholds[i]) {
+      item.classList.add('visible');
+    } else if (!goingDown && progress < thresholds[i]) {
+      item.classList.remove('visible');
     }
   });
 }

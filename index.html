@@ -165,7 +165,68 @@
     <h2>Move money globally<br />in seconds</h2>
 
     <div class="send-phone-wrap">
-      <img src="assets/phone-send.png" alt="Orbit send money screen" />
+      <div class="phone-ui">
+
+        <!-- Send to -->
+        <div class="pu-card send-to-card">
+          <p class="pu-label">Send to</p>
+          <div class="recipient-row">
+            <div class="recipient-profile">
+              <div class="recipient-avatar">
+                <img src="assets/Profile img/Lina Johnson.svg" alt="Lina Johnson">
+              </div>
+              <div class="recipient-info">
+                <span class="recipient-name">Lina Johnson</span>
+                <span class="recipient-handle">@lina.usd</span>
+              </div>
+            </div>
+            <button class="change-btn" id="changeRecipientBtn">Change</button>
+          </div>
+        </div>
+
+        <!-- Currency + Amount -->
+        <div class="pu-card currency-card">
+          <p class="pu-label">Select Currency</p>
+          <div class="currency-tabs">
+            <button class="ctab" data-symbol="₦" data-fee-rate="0.005">
+              <img src="assets/Currencies/Nigeria.svg" alt="NGN"> NGN
+            </button>
+            <button class="ctab active" data-symbol="$" data-fee-rate="0.01">
+              <img src="assets/Currencies/United States.svg" alt="USD"> USD
+            </button>
+            <button class="ctab" data-symbol="€" data-fee-rate="0.01">
+              <img src="assets/Currencies/United Kingdom.svg" alt="EUR"> EUR
+            </button>
+            <button class="ctab" data-symbol="$" data-fee-rate="0">
+              <img src="assets/Currencies/Usdc.svg" alt="USDT"> USDT
+            </button>
+          </div>
+          <div class="amount-box">
+            <span class="curr-symbol">$</span>
+            <input id="amountInput" class="amount-input" type="text" inputmode="decimal" placeholder="0.00">
+          </div>
+          <div class="message-box">
+            <input id="messageInput" class="msg-input" type="text" placeholder='Add a message (e.g., "Thanks!")'>
+            <button class="emoji-btn" id="emojiBtn" type="button">😊</button>
+          </div>
+        </div>
+
+        <!-- Fees -->
+        <div class="pu-card fees-card">
+          <div class="fee-row">
+            <span>Fees:</span>
+            <span id="feeDisplay" class="fee-val">$ 0.00</span>
+          </div>
+          <div class="fee-row">
+            <span>Transaction Duration:</span>
+            <strong class="fee-duration">Instant</strong>
+          </div>
+        </div>
+
+        <!-- Send Button -->
+        <button class="send-btn" id="sendBtn">Send</button>
+
+      </div>
     </div>
 
     <!-- Scattered flag circles -->
