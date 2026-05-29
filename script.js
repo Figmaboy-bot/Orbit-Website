@@ -135,6 +135,31 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
+// Hamburger mobile menu toggle
+const hamburger = document.querySelector('.nav-hamburger');
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('nav-open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close menu when a mobile link is clicked
+  document.querySelectorAll('.nav-mobile-links a, .nav-download-mobile').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('nav-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target)) {
+      nav.classList.remove('nav-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 // Draggable currency circles with gravity + stacking collisions
 (function () {
   const section  = document.querySelector('.send-money');
