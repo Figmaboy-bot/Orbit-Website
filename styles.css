@@ -1504,12 +1504,13 @@ nav.nav-open .nav-mobile-menu {
   max-height: 400px;
   opacity: 1;
   padding: 16px 4px 4px;
-}
+} 
 
 .nav-mobile-links {
   list-style: none;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4px;
   margin-bottom: 12px;
 }
