@@ -327,15 +327,15 @@ if (hamburger) {
   function dropAll() {
     if (dropped) return;
     dropped = true;
-    const sr   = section.getBoundingClientRect();
-    const size = 128;
+    const sr = section.getBoundingClientRect();
 
     circles.forEach(circle => {
-      const s  = state.get(circle);
-      s.px     = Math.random() * (sr.width - size);
-      s.py     = 0;
-      s.vx     = (Math.random() - 0.5) * 4;
-      s.vy     = Math.random() * 2;
+      const size = circle.offsetWidth || 64;
+      const s    = state.get(circle);
+      s.px = Math.random() * Math.max(0, sr.width - size);
+      s.py = 0;
+      s.vx = (Math.random() - 0.5) * 4;
+      s.vy = Math.random() * 2;
 
       circle.style.position = 'absolute';
       circle.style.bottom   = 'auto';
@@ -385,11 +385,13 @@ function updateActionItems() {
 window.addEventListener('scroll', updateActionItems, { passive: true });
 updateActionItems();
 
-// Animate steps in How it works
-const stepItems = document.querySelectorAll('.step-item');
-let current = 0;
-setInterval(() => {
-  stepItems.forEach(s => s.classList.remove('active'));
-  current = (current + 1) % stepItems.length;
-  stepItems[current].classList.add('active');
-}, 2500);
+// Steps in How it works — activate on click
+document.querySelectorAll('.step-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const step = item.dataset.step;
+    document.querySelectorAll('.step-item').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.how-row-step').forEach(r => r.classList.remove('active'));
+    item.classList.add('active');
+    document.querySelector(`.how-row-step[data-step="${step}"]`)?.classList.add('active');
+  });
+});

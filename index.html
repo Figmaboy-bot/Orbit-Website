@@ -104,25 +104,116 @@
 
   <!-- ── HOW IT WORKS ── -->
   <section class="how-it-works">
+    <div class="how-inner">
     <h2>How it works</h2>
 
-    <div class="how-phone-wrap">
-      <img src="assets/phone-home.png" alt="Orbit app home screen" />
+    <!-- Step 1: Create Account -->
+    <div class="how-row how-row-step active" data-step="1">
+      <div class="how-left">
+        <div class="how-text-block">
+          <h3 class="how-subheading">Create your Orbit account</h3>
+          <p class="how-subtext">Sign up, verify your identity, and set your preferred currency.</p>
+        </div>
+        <a href="#" class="how-download-btn">
+          <img src="assets/famicons_logo-apple-appstore.svg" alt="App Store">
+          <img src="assets/famicons_logo-google-playstore.svg" alt="Play Store">
+          Download App
+        </a>
+      </div>
+      <div class="how-phone-frame">
+        <img src="assets/card-grass-bg.png" alt="" class="how-frame-bg" />
+        <img src="assets/How it Works/Create Account.png" alt="Create Orbit account" class="how-frame-phone" />
+      </div>
+    </div>
+
+    <!-- Step 2: Add funds or stablecoins -->
+    <div class="how-row how-row-step how-row--reversed" data-step="2">
+      <div class="how-phone-frame">
+        <img src="https://www.figma.com/api/mcp/asset/bb5dd13c-ae50-460f-864c-0f71f0da8fd4" alt="" class="how-frame-bg" />
+        <img src="https://www.figma.com/api/mcp/asset/0966325f-d7d6-43df-852e-2bfa9a472f93" alt="Orbit currencies" class="how-frame-coins" />
+      </div>
+      <div class="how-left">
+        <div class="how-text-block">
+          <h3 class="how-subheading">Add funds or stablecoins</h3>
+          <p class="how-subtext">Deposit Naira, USD, Euro, USDT, or USDC into your Orbit wallet.</p>
+        </div>
+        <a href="#" class="how-download-btn">
+          <img src="assets/famicons_logo-apple-appstore.svg" alt="App Store">
+          <img src="assets/famicons_logo-google-playstore.svg" alt="Play Store">
+          Download App
+        </a>
+      </div>
+    </div>
+
+    <!-- Step 3: Move money freely -->
+    <div class="how-row how-row-step" data-step="3">
+      <div class="how-left">
+        <div class="how-text-block">
+          <h3 class="how-subheading">Move money freely</h3>
+          <p class="how-subtext">Transfer to banks, crypto wallets, or Orbit users instantly.</p>
+        </div>
+        <a href="#" class="how-download-btn">
+          <img src="assets/famicons_logo-apple-appstore.svg" alt="App Store">
+          <img src="assets/famicons_logo-google-playstore.svg" alt="Play Store">
+          Download App
+        </a>
+      </div>
+      <div class="how-phone-frame">
+        <img src="https://www.figma.com/api/mcp/asset/e29ac00e-6da9-4f9b-906f-482a60f81d0e" alt="" class="how-frame-bg" />
+        <div class="how-txn-card">
+          <p class="how-txn-title">Recent Transactions</p>
+          <div class="how-txn-list">
+            <div class="how-txn-item">
+              <div class="how-txn-icon"><img src="assets/ArrowsCounterClockwise.svg" alt=""></div>
+              <div class="how-txn-info">
+                <span class="how-txn-label">Conversion USD → NGN</span>
+                <span class="how-txn-meta">Today · 10:24 AM</span>
+              </div>
+              <span class="how-txn-amount debit">-₦12,300.00</span>
+            </div>
+            <div class="how-txn-item">
+              <div class="how-txn-icon"><img src="assets/ArrowLineUp.svg" alt=""></div>
+              <div class="how-txn-info">
+                <span class="how-txn-label">Received @mariya.usdc</span>
+                <span class="how-txn-meta">Yesterday</span>
+              </div>
+              <span class="how-txn-amount credit">+$140.00</span>
+            </div>
+            <div class="how-txn-item">
+              <div class="how-txn-icon"><img src="assets/ArrowLineUp.svg" alt=""></div>
+              <div class="how-txn-info">
+                <span class="how-txn-label">Transfer Sent @tommy.orbit</span>
+                <span class="how-txn-meta">Yesterday</span>
+              </div>
+              <span class="how-txn-amount debit">-$50.00</span>
+            </div>
+            <div class="how-txn-item">
+              <div class="how-txn-icon"><img src="assets/ArrowsCounterClockwise.svg" alt=""></div>
+              <div class="how-txn-info">
+                <span class="how-txn-label">Conversion USD → NGN</span>
+                <span class="how-txn-meta">Today · 10:24 AM</span>
+              </div>
+              <span class="how-txn-amount debit">-₦12,300.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="steps-pill">
-      <div class="step-item active">
+      <div class="step-item active" data-step="1">
         <div class="step-num">1</div>
         Create Account
       </div>
-      <div class="step-item">
+      <div class="step-item" data-step="2">
         <div class="step-num">2</div>
         Add funds or stablecoins
       </div>
-      <div class="step-item">
+      <div class="step-item" data-step="3">
         <div class="step-num">3</div>
         Send, spend, and convert globally
       </div>
+    </div>
     </div>
   </section>
 
@@ -435,7 +526,7 @@
 
         <div class="faq-item">
           <button class="faq-question">
-            Is Orbit available globally?
+            What currencies does Orbit support?
             <span class="faq-toggle">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -445,14 +536,13 @@
           </button>
           <div class="faq-answer">
             <p>Orbit supports Nigerian Naira (NGN), US Dollar (USD), Euro (EUR), and USDT stablecoin. We are
-              continuously
-              expanding our currency support.</p>
+              continuously expanding our currency support.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question">
-            Is Orbit available globally?
+            How fast are international transfers?
             <span class="faq-toggle">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -468,7 +558,7 @@
 
         <div class="faq-item">
           <button class="faq-question">
-            Is Orbit available globally?
+            How does Orbit keep my money safe?
             <span class="faq-toggle">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
                 <line x1="12" y1="5" x2="12" y2="19" />
@@ -484,7 +574,7 @@
 
         <div class="faq-item">
           <button class="faq-question">
-            Is Orbit available globally?
+            How do I get an Orbit card?
             <span class="faq-toggle">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
                 <line x1="12" y1="5" x2="12" y2="19" />
