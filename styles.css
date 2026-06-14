@@ -684,7 +684,7 @@ nav.nav-open {
   justify-content: center;
   position: relative;
   z-index: 2;
-  background: url('assets/Send bg.png') center center / 100% 100% no-repeat;
+  background: url('assets/Send bg.webp') center center / 100% 100% no-repeat;
   border-radius: 32px;
   padding: 20px;
 }
