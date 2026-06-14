@@ -5,7 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Orbit — Your Money, Without Borders</title>
-  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="preload" as="image" href="assets/hero-bg.webp" />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -58,7 +61,7 @@
 
   <!-- ── HERO ── -->
   <section class="hero">
-    <img src="assets/hero-bg.webp" alt="Man using Orbit app" class="hero-photo" />
+    <img src="assets/hero-bg.webp" alt="Man using Orbit app" class="hero-photo" fetchpriority="high" />
     <div class="hero-fade"></div>
 
     <!-- Wallet overlay card -->
@@ -81,21 +84,21 @@
     <div class="actions-inner">
       <div class="action-item">
         <div class="action-icon add">
-          <img src="assets/PlusCircle.svg" alt="">
+          <img src="assets/PlusCircle.svg" alt="" loading="lazy">
         </div>
         <span class="action-label add">Add</span>
       </div>
 
       <div class="action-item">
         <div class="action-icon send">
-          <img src="assets/ArrowLineUp.svg" alt="">
+          <img src="assets/ArrowLineUp.svg" alt="" loading="lazy">
         </div>
         <span class="action-label send">Send</span>
       </div>
 
       <div class="action-item">
         <div class="action-icon convert">
-          <img src="assets/ArrowsCounterClockwise.svg" alt="">
+          <img src="assets/ArrowsCounterClockwise.svg" alt="" loading="lazy">
         </div>
         <span class="action-label convert">Convert</span>
       </div>
@@ -121,16 +124,16 @@
         </a>
       </div>
       <div class="how-phone-frame">
-        <img src="assets/card-grass-bg.webp" alt="" class="how-frame-bg" />
-        <img src="assets/How it Works/Create Account.webp" alt="Create Orbit account" class="how-frame-phone" />
+        <img src="assets/card-grass-bg.webp" alt="" class="how-frame-bg" loading="lazy" />
+        <img src="assets/How it Works/Create Account.webp" alt="Create Orbit account" class="how-frame-phone" loading="lazy" />
       </div>
     </div>
 
     <!-- Step 2: Add funds or stablecoins -->
     <div class="how-row how-row-step how-row--reversed" data-step="2">
       <div class="how-phone-frame">
-        <img src="assets/how-step2-bg.webp" alt="" class="how-frame-bg" />
-        <img src="assets/how-step2-coins.webp" alt="Orbit currencies" class="how-frame-coins" />
+        <img src="assets/how-step2-bg.webp" alt="" class="how-frame-bg" loading="lazy" />
+        <img src="assets/how-step2-coins.webp" alt="Orbit currencies" class="how-frame-coins" loading="lazy" />
       </div>
       <div class="how-left">
         <div class="how-text-block">
@@ -159,8 +162,8 @@
         </a>
       </div>
       <div class="how-phone-frame">
-        <img src="assets/how-step3-bg.webp" alt="" class="how-frame-bg" />
-        <img src="assets/how-step3.webp" alt="Recent Transactions" class="how-txn-card" />
+        <img src="assets/how-step3-bg.webp" alt="" class="how-frame-bg" loading="lazy" />
+        <img src="assets/how-step3.webp" alt="Recent Transactions" class="how-txn-card" loading="lazy" />
       </div>
     </div>
 
@@ -188,13 +191,13 @@
 
       <div class="security-layout">
         <div class="security-shield">
-          <img src="assets/shield.webp" alt="Security shield" />
+          <img src="assets/shield.webp" alt="Security shield" loading="lazy" />
         </div>
 
         <div class="security-list">
           <div class="security-item">
             <div class="security-icon">
-              <img src="assets/LockKey.svg" alt="">
+              <img src="assets/LockKey.svg" alt="" loading="lazy">
             </div>
             <div>
               <h4>Bank-Grade Encryption</h4>
@@ -204,7 +207,7 @@
 
           <div class="security-item">
             <div class="security-icon">
-              <img src="assets/ScanSmiley.svg" alt="">
+              <img src="assets/ScanSmiley.svg" alt="" loading="lazy">
             </div>
             <div>
               <h4>Biometric Authentication</h4>
@@ -214,7 +217,7 @@
 
           <div class="security-item">
             <div class="security-icon">
-              <img src="assets/SecurityCamera.svg" alt="">
+              <img src="assets/SecurityCamera.svg" alt="" loading="lazy">
             </div>
             <div>
               <h4>Real-Time Fraud Monitoring</h4>
@@ -224,7 +227,7 @@
 
           <div class="security-item">
             <div class="security-icon">
-              <img src="assets/FileText.svg" alt="">
+              <img src="assets/FileText.svg" alt="" loading="lazy">
             </div>
             <div>
               <h4>Regulated Compliance Standards</h4>
@@ -249,7 +252,7 @@
           <div class="recipient-row">
             <div class="recipient-profile">
               <div class="recipient-avatar">
-                <img src="assets/Profile img/Lina Johnson.svg" alt="Lina Johnson">
+                <img src="assets/Profile img/Lina Johnson.svg" alt="Lina Johnson" loading="lazy">
               </div>
               <div class="recipient-info">
                 <span class="recipient-name">Lina Johnson</span>
@@ -265,16 +268,16 @@
           <p class="pu-label">Select Currency</p>
           <div class="currency-tabs">
             <button class="ctab" data-symbol="₦" data-fee-rate="0.005">
-              <img src="assets/Currencies/Nigeria.svg" alt="NGN"> NGN
+              <img src="assets/Currencies/Nigeria.svg" alt="NGN" loading="lazy"> NGN
             </button>
             <button class="ctab active" data-symbol="$" data-fee-rate="0.01">
-              <img src="assets/Currencies/United States.svg" alt="USD"> USD
+              <img src="assets/Currencies/United States.svg" alt="USD" loading="lazy"> USD
             </button>
             <button class="ctab" data-symbol="€" data-fee-rate="0.01">
-              <img src="assets/Currencies/United Kingdom.svg" alt="EUR"> EUR
+              <img src="assets/Currencies/United Kingdom.svg" alt="EUR" loading="lazy"> EUR
             </button>
             <button class="ctab" data-symbol="$" data-fee-rate="0">
-              <img src="assets/Currencies/Usdc.svg" alt="USDT"> USDT
+              <img src="assets/Currencies/Usdc.svg" alt="USDT" loading="lazy"> USDT
             </button>
           </div>
           <div class="amount-box">
@@ -307,56 +310,56 @@
 
     <!-- Scattered flag circles -->
     <div class="flag-scatter">
-      <div class="flag-circle"><img src="assets/Currencies/Nigeria.svg" alt="Nigeria"></div>
-      <div class="flag-circle"><img src="assets/Currencies/United States.svg" alt="United States"></div>
-      <div class="flag-circle"><img src="assets/Currencies/United Kingdom.svg" alt="United Kingdom"></div>
-      <div class="flag-circle"><img src="assets/Currencies/China.svg" alt="China"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Brazil.svg" alt="Brazil"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Canada.svg" alt="Canada"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Australia.svg" alt="Australia"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Senegal.svg" alt="Senegal"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Usdt.svg" alt="USDT"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Usdc.svg" alt="USDC"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Ghana.svg" alt="Ghana"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Kenya.svg" alt="Kenya"></div>
-      <div class="flag-circle"><img src="assets/Currencies/South-africa.svg" alt="South Africa"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Mexico.svg" alt="Mexico"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Spain.svg" alt="Spain"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Italy.svg" alt="Italy"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Switzerland.svg" alt="Switzerland"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Container.svg" alt=""></div>
-      <div class="flag-circle"><img src="assets/Currencies/Frame.svg" alt=""></div>
-      <div class="flag-circle"><img src="assets/Currencies/Turkey.svg" alt="Turkey"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Argentina.svg" alt="Argentina"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Denmark.svg" alt="Denmark"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Finland.svg" alt="Finland"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Greece.svg" alt="Greece"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Taiwan.svg" alt="Taiwan"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Angola.svg" alt="Angola"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Armenia.svg" alt="Armenia"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Austria.svg" alt="Austria"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Bahrain.svg" alt="Bahrain"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Belarus.svg" alt="Belarus"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Botswana.svg" alt="Botswana"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Cambodia.svg" alt="Cambodia"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Chile.svg" alt="Chile"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Cuba.svg" alt="Cuba"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Czechia.svg" alt="Czechia"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Ecuador.svg" alt="Ecuador"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Estonia.svg" alt="Estonia"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Fiji.svg" alt="Fiji"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Gambia.svg" alt="Gambia"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Jamaica.svg" alt="Jamaica"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Kiribati.svg" alt="Kiribati"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Liberia.svg" alt="Liberia"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Libya.svg" alt="Libya"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Luxembourg.svg" alt="Luxembourg"></div>
-      <div class="flag-circle"><img src="assets/Currencies/New Zealand.svg" alt="New Zealand"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Nicaragua.svg" alt="Nicaragua"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Niger.svg" alt="Niger"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Oman.svg" alt="Oman"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Rwanda.svg" alt="Rwanda"></div>
-      <div class="flag-circle"><img src="assets/Currencies/Venezuela.svg" alt="Venezuela"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Nigeria.svg" alt="Nigeria" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/United States.svg" alt="United States" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/United Kingdom.svg" alt="United Kingdom" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/China.svg" alt="China" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Brazil.svg" alt="Brazil" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Canada.svg" alt="Canada" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Australia.svg" alt="Australia" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Senegal.svg" alt="Senegal" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Usdt.svg" alt="USDT" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Usdc.svg" alt="USDC" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Ghana.svg" alt="Ghana" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Kenya.svg" alt="Kenya" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/South-africa.svg" alt="South Africa" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Mexico.svg" alt="Mexico" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Spain.svg" alt="Spain" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Italy.svg" alt="Italy" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Switzerland.svg" alt="Switzerland" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Container.svg" alt="" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Frame.svg" alt="" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Turkey.svg" alt="Turkey" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Argentina.svg" alt="Argentina" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Denmark.svg" alt="Denmark" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Finland.svg" alt="Finland" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Greece.svg" alt="Greece" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Taiwan.svg" alt="Taiwan" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Angola.svg" alt="Angola" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Armenia.svg" alt="Armenia" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Austria.svg" alt="Austria" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Bahrain.svg" alt="Bahrain" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Belarus.svg" alt="Belarus" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Botswana.svg" alt="Botswana" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Cambodia.svg" alt="Cambodia" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Chile.svg" alt="Chile" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Cuba.svg" alt="Cuba" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Czechia.svg" alt="Czechia" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Ecuador.svg" alt="Ecuador" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Estonia.svg" alt="Estonia" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Fiji.svg" alt="Fiji" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Gambia.svg" alt="Gambia" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Jamaica.svg" alt="Jamaica" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Kiribati.svg" alt="Kiribati" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Liberia.svg" alt="Liberia" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Libya.svg" alt="Libya" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Luxembourg.svg" alt="Luxembourg" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/New Zealand.svg" alt="New Zealand" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Nicaragua.svg" alt="Nicaragua" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Niger.svg" alt="Niger" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Oman.svg" alt="Oman" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Rwanda.svg" alt="Rwanda" loading="lazy"></div>
+      <div class="flag-circle"><img src="assets/Currencies/Venezuela.svg" alt="Venezuela" loading="lazy"></div>
     </div>
   </section>
 
@@ -368,7 +371,7 @@
       <div class="smarter-grid">
         <div class="smarter-card">
           <div class="smarter-icon">
-            <img src="assets/Lightbulb.svg" alt="">
+            <img src="assets/Lightbulb.svg" alt="" loading="lazy">
           </div>
           <div class="smarter-content">
             <h3>Best time to convert</h3>
@@ -378,7 +381,7 @@
 
         <div class="smarter-card">
           <div class="smarter-icon">
-            <img src="assets/ChartBar.svg" alt="">
+            <img src="assets/ChartBar.svg" alt="" loading="lazy">
           </div>
           <div class="smarter-content">
             <h3>Spending analytics</h3>
@@ -388,7 +391,7 @@
 
         <div class="smarter-card">
           <div class="smarter-icon">
-            <img src="assets/Vault.svg" alt="">
+            <img src="assets/Vault.svg" alt="" loading="lazy">
           </div>
           <div class="smarter-content">
             <h3>Stablecoin yield vaults</h3>
@@ -398,7 +401,7 @@
 
         <div class="smarter-card">
           <div class="smarter-icon">
-            <img src="assets/BellRinging.svg" alt="">
+            <img src="assets/BellRinging.svg" alt="" loading="lazy">
           </div>
           <div class="smarter-content">
             <h3>Smart financial alerts</h3>
@@ -414,16 +417,16 @@
     <h2>Spend globally with Orbit</h2>
 
     <div class="card-hero-wrap">
-      <img src="assets/card-grass-bg.webp" alt="" class="card-grass-bg" />
+      <img src="assets/card-grass-bg.webp" alt="" class="card-grass-bg" loading="lazy" />
       <div class="card-img-wrap">
-        <img src="assets/card.webp" alt="Orbit card" />
+        <img src="assets/card.webp" alt="Orbit card" loading="lazy" />
       </div>
     </div>
 
     <div class="card-features-grid">
       <div class="card-feature">
         <div class="feature-icon-wrap">
-          <img src="assets/CreditCard.svg" alt="">
+          <img src="assets/CreditCard.svg" alt="" loading="lazy">
         </div>
         <div class="feature-content">
           <h4>Virtual &amp; physical cards</h4>
@@ -433,7 +436,7 @@
 
       <div class="card-feature">
         <div class="feature-icon-wrap">
-          <img src="assets/Frame 1618874413.svg" alt="">
+          <img src="assets/Frame 1618874413.svg" alt="" loading="lazy">
         </div>
         <div class="feature-content">
           <h4>Multi-currency spending</h4>
@@ -443,7 +446,7 @@
 
       <div class="card-feature">
         <div class="feature-icon-wrap">
-          <img src="assets/Snowflake.svg" alt="">
+          <img src="assets/Snowflake.svg" alt="" loading="lazy">
         </div>
         <div class="feature-content">
           <h4>Freeze instantly</h4>
@@ -453,7 +456,7 @@
 
       <div class="card-feature">
         <div class="feature-icon-wrap">
-          <img src="assets/HandWithdraw.svg" alt="Withdraw from ATM" />
+          <img src="assets/HandWithdraw.svg" alt="Withdraw from ATM" loading="lazy" />
         </div>
         <div class="feature-content">
           <h4>Global ATM withdrawals</h4>
@@ -462,7 +465,7 @@
       </div>
     </div>
 
-    <a href="#" class="get-card-btn">Get Card <img src="assets/ArrowRight.svg" alt="" /></a>
+    <a href="#" class="get-card-btn">Get Card <img src="assets/ArrowRight.svg" alt="" loading="lazy" /></a>
   </section>
 
   <!-- ── FAQ ── -->
@@ -557,7 +560,7 @@
 
   <!-- ── CTA ── -->
   <section class="cta-section">
-    <img src="assets/cta-bg.webp" alt="Woman using Orbit app" class="cta-photo" />
+    <img src="assets/cta-bg.webp" alt="Woman using Orbit app" class="cta-photo" loading="lazy" />
     <div class="cta-overlay"></div>
     <div class="cta-content">
       <h2>The future of global<br>money starts here.</h2>
@@ -635,7 +638,7 @@
 
     <!-- Giant wordmark -->
     <div class="footer-wordmark">
-      <img src="assets/White Logo .svg" alt="">
+      <img src="assets/White Logo .svg" alt="" loading="lazy">
     </div>
   </footer>
 
