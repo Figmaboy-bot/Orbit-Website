@@ -395,3 +395,84 @@ document.querySelectorAll('.step-item').forEach(item => {
     document.querySelector(`.how-row-step[data-step="${step}"]`)?.classList.add('active');
   });
 });
+
+// Scroll-reveal: fade-up headings, cards, and blocks as they enter the viewport
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const targets = document.querySelectorAll([
+    '.how-it-works h2',
+    '.how-row-step.active .how-left',
+    '.how-row-step.active .how-phone-frame',
+    '.steps-pill',
+    '.security-heading',
+    '.security-shield',
+    '.security-item',
+    '.send-money > h2',
+    '.send-phone-wrap',
+    '.smarter h2',
+    '.smarter-card',
+    '.card-section > h2',
+    '.card-hero-wrap',
+    '.card-feature',
+    '.get-card-btn',
+    '.faq h2',
+    '.faq-item',
+    '.cta-content h2',
+    '.cta-content p',
+    '.cta-btns'
+  ].join(','));
+
+  targets.forEach(el => el.classList.add('reveal'));
+
+  // Once revealed, strip the helper styles so hover transitions behave normally
+  const cleanUp = el => {
+    el.classList.remove('reveal', 'in-view');
+    el.style.removeProperty('--reveal-delay');
+  };
+
+  const io = new IntersectionObserver(entries => {
+    let order = 0;
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const delay = Math.min(order++ * 90, 450);
+      el.style.setProperty('--reveal-delay', delay + 'ms');
+      el.classList.add('in-view');
+      io.unobserve(el);
+      setTimeout(() => cleanUp(el), delay + 850);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  targets.forEach(el => io.observe(el));
+})();
+
+// Hero parallax: as the page scrolls over the pinned hero, its content drifts up and fades
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const heroContent = document.querySelector('.hero-content');
+  const wallet = document.querySelector('.wallet-overlay');
+  if (!heroContent) return;
+
+  let ticking = false;
+
+  function update() {
+    ticking = false;
+    const p = Math.min(1, window.scrollY / (window.innerHeight * 0.8));
+    heroContent.style.opacity = 1 - p;
+    heroContent.style.transform = `translateY(${-p * 60}px)`;
+    if (wallet) {
+      wallet.style.opacity = 1 - p;
+      wallet.style.transform = `translateY(calc(-50% - ${p * 40}px))`;
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }, { passive: true });
+  update();
+})();
