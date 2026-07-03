@@ -1896,7 +1896,7 @@ nav.nav-open .nav-mobile-menu {
     margin-bottom: 8px;
   }
   .security-shield img {
-    width: 220px;
+    width: 400px;
   }
   .security-item {
     flex-direction: column;
@@ -2000,7 +2000,7 @@ nav.nav-open .nav-mobile-menu {
   }
   .card-hero-wrap {
     margin: 0 -24px;
-    height: 800px;
+    height: 500px;
   }
 
   .card-features-grid {
@@ -2053,6 +2053,9 @@ nav.nav-open .nav-mobile-menu {
   .cta-content {
     padding: 0 24px;
     margin-bottom: 0;
+  }
+  .cta-photo {
+    object-position:  70%;
   }
   .cta-overlay {
     background: rgba(0, 0, 0, 0.45);
