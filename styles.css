@@ -1860,6 +1860,9 @@ nav.nav-open .nav-mobile-menu {
     justify-content: flex-start;
   }
   .how-phone-frame {
+    /* the row is a column here, so flex:1 would collapse the height to 0 */
+    flex: none;
+    width: 100%;
     height: 440px;
   }
   .steps-pill {
