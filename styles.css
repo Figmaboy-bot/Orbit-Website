@@ -1514,9 +1514,14 @@ nav.nav-open {
 
 /* ── CTA ── */
 .cta-section {
-  position: relative;
+  /* pins when its top reaches the top of the screen; the footer scrolls over it */
+  position: sticky;
+  top: 0;
+  z-index: 1;
   overflow: hidden;
-  height: 1000px;
+  height: 100vh;
+  height: 100svh;
+  min-height: 700px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -1603,23 +1608,15 @@ nav.nav-open {
   height: 20px;
 }
 
-.cta-footer-gradient {
-  height: 400px;
-  background: linear-gradient(to bottom, transparent 0%, rgb(255, 255, 255) 60%, rgb(255, 255, 255) 100%);
-  margin-top: -400px;
-  position: relative;
-  z-index: 2;
-  pointer-events: none;
-}
-
 /* ── FOOTER ── */
 footer {
   background: var(--purple-vivid);
-  border-radius: 40px;
+  border-radius: 40px 40px 0 0;
   padding: 60px 64px 0;
   overflow: hidden;
   position: relative;
-  margin: 100px 20px 20px 20px;
+  z-index: 2;
+  margin: 100px 0 0;
 }
 
 .footer-links {
@@ -2045,7 +2042,6 @@ nav.nav-open .nav-mobile-menu {
 
   /* CTA */
   .cta-section {
-    height: auto;
     min-height: 520px;
     padding: 80px 0 60px;
     margin: 60px 0;
@@ -2070,20 +2066,11 @@ nav.nav-open .nav-mobile-menu {
     padding: 14px 28px;
   }
 
-.cta-footer-gradient {
-  height: 300px;
-  background: linear-gradient(to bottom, transparent 0%, rgb(255, 255, 255) 80%, rgb(255, 255, 255) 100%);
-  margin-top: -300px;
-  position: relative;
-  z-index: 2;
-  pointer-events: none;
-}
-
   /* FOOTER */
   footer {
     padding: 48px 24px;
-    border-radius: 24px;
-    margin: 60px 12px 0;
+    border-radius: 24px 24px 0 0;
+    margin: 60px 0 0;
   }
   .footer-links {
     grid-template-columns: 1fr 1fr;
