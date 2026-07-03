@@ -315,9 +315,23 @@ if (hamburger) {
               sa.vx *= 0.92; sa.vy *= 0.92;
               sb.vx *= 0.92; sb.vy *= 0.92;
             }
+
+            // Keep pushed circles inside the section walls and floor
+            const sizeA = a.offsetWidth, sizeB = b.offsetWidth;
+            sa.px = Math.max(0, Math.min(sr.width - sizeA, sa.px));
+            sa.py = Math.min(sr.height - sizeA, sa.py);
+            sb.px = Math.max(0, Math.min(sr.width - sizeB, sb.px));
+            sb.py = Math.min(sr.height - sizeB, sb.py);
           }
         }
       }
+
+      // Re-render so collision corrections apply this frame (sleeping circles too)
+      allActive.forEach(c => {
+        const s = state.get(c);
+        c.style.left = s.px + 'px';
+        c.style.top  = s.py + 'px';
+      });
 
       requestAnimationFrame(loop);
     }
